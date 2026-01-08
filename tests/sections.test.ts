@@ -4,6 +4,7 @@ import { SectionTypeEnum } from "../src/entities/SectionTypeEnum";
 
 import { Section } from "../src/entities/Section";
 import { PersonaSection } from "../src/entities/sections/Persona";
+import { ProfessionalExperiencesSection } from "../src/entities/sections/ProfessionalExperiences";
 
 describe("Generic sections test", () => {
     test("Create generic section", () => {
@@ -43,6 +44,28 @@ describe("Persona sections test", () => {
             "Street X",
             "https://linkedin.com/in/bob-tiger-123412312/",
             "photos/persona/bob_tiger1.png");
+
+        expect(valueReceived).toBeInstanceOf(valueExpected);
+    });
+});
+
+describe("Professional experiences test", () => {
+    test("Test if professional experiences section is an instance of a generic section", () => {
+        let valueExpected = Section;
+        let valueReceived = new ProfessionalExperiencesSection(SectionTypeEnum.PROFISSIONAL_EXPERIENCES, [
+            {
+                companyName: "Example 1",
+                beggining: new Date("2024-11-12"),
+                ending: new Date("2025-06-15"),
+                description: "Testing 1"
+            },
+            {
+                companyName: "Example 2",
+                beggining: new Date("2025-08-05"),
+                ending: undefined,
+                description: "Testing 2"
+            }
+        ]);
 
         expect(valueReceived).toBeInstanceOf(valueExpected);
     });
