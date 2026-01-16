@@ -1,16 +1,16 @@
 import { Section } from "../Section";
 
-import { SectionTypeEnum } from "../SectionTypeEnum";
+import { SectionTypeEnum } from "../../enums/SectionTypeEnum";
 
 import { Role } from "../../@types/Role";
 
 class ProfessionalExperiencesSection extends Section {
     private roles: Array<Role>;
 
-    public constructor(type: SectionTypeEnum,
+    public constructor(sectionType: SectionTypeEnum,
         roles: Array<Role>
     ) {
-        super(type);
+        super(sectionType);
         this.roles = roles;
     }
 

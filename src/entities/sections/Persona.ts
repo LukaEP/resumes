@@ -1,5 +1,5 @@
 import { Section } from "../Section";
-import { SectionTypeEnum } from "../SectionTypeEnum";
+import { SectionTypeEnum } from "../../enums/SectionTypeEnum";
 
 class PersonaSection extends Section {
     private name: string;

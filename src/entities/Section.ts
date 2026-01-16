@@ -1,4 +1,4 @@
-import { SectionTypeEnum } from "./SectionTypeEnum";
+import { SectionTypeEnum } from "../enums/SectionTypeEnum";
 
 class Section {
     private type: SectionTypeEnum;

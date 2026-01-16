@@ -1,10 +1,13 @@
 import { describe, expect, test } from "@jest/globals";
 
-import { SectionTypeEnum } from "../src/entities/SectionTypeEnum";
+import { SectionTypeEnum } from "../src/enums/SectionTypeEnum";
 
 import { Section } from "../src/entities/Section";
 import { PersonaSection } from "../src/entities/sections/Persona";
 import { ProfessionalExperiencesSection } from "../src/entities/sections/ProfessionalExperiences";
+import { EducationsSection } from "../src/entities/sections/Educations";
+import { Types } from "../src/enums/Types";
+import { Levels } from "../src/enums/Levels";
 
 describe("Generic sections test", () => {
     test("Create generic section", () => {
@@ -64,6 +67,34 @@ describe("Professional experiences test", () => {
                 beggining: new Date("2025-08-05"),
                 ending: undefined,
                 description: "Testing 2"
+            }
+        ]);
+
+        expect(valueReceived).toBeInstanceOf(valueExpected);
+    });
+});
+
+describe("Educations test", () => {
+    test("Test if education section is an instance of a generic section", () => {
+        let valueExpected = Section;
+        let valueReceived = new EducationsSection(SectionTypeEnum.EDUCATION, [
+            {
+                institution: "University X",
+                type: Types.ACADEMIC,
+                level: Levels.BACHELOR,
+                beggining: new Date("2020-02-10"),
+                ending: new Date("2023-12-10"),
+                skillsAcquired: [
+                    {
+                        value: "C",
+                        type: "technology"
+                    },
+                    {
+                        value: "Java",
+                        type: "technology"
+                    }
+                ],
+                name: "Computer Science"
             }
         ]);
 
