@@ -7,6 +7,7 @@ import { PersonaSection } from "../src/entities/sections/Persona";
 import { ProfessionalExperiencesSection } from "../src/entities/sections/ProfessionalExperiences";
 import { EducationsSection } from "../src/entities/sections/Educations";
 import { SkillsSection } from "../src/entities/sections/Skills";
+import { DescriptionSection } from "../src/entities/sections/Description";
 import { Types } from "../src/enums/Types";
 import { Levels } from "../src/enums/Levels";
 
@@ -116,6 +117,15 @@ describe("Skills test", () => {
                 type: "technology"
             }
         ]);
+
+        expect(valueReceived).toBeInstanceOf(valueExpected);
+    });
+});
+
+describe("Description test", () => {
+    test("Test if description section is an instace of a generic section", () => {
+        let valueExpected = Section;
+        let valueReceived = new DescriptionSection(SectionTypeEnum.DESCRIPTION, "My name is Barry Alle, and I'm the fastest man alive!");
 
         expect(valueReceived).toBeInstanceOf(valueExpected);
     });
