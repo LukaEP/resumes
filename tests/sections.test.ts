@@ -6,6 +6,7 @@ import { Section } from "../src/entities/Section";
 import { PersonaSection } from "../src/entities/sections/Persona";
 import { ProfessionalExperiencesSection } from "../src/entities/sections/ProfessionalExperiences";
 import { EducationsSection } from "../src/entities/sections/Educations";
+import { SkillsSection } from "../src/entities/sections/Skills";
 import { Types } from "../src/enums/Types";
 import { Levels } from "../src/enums/Levels";
 
@@ -95,6 +96,24 @@ describe("Educations test", () => {
                     }
                 ],
                 name: "Computer Science"
+            }
+        ]);
+
+        expect(valueReceived).toBeInstanceOf(valueExpected);
+    });
+});
+
+describe("Skills test", () => {
+    test("Test if skill section is an instance of a generic section", () => {
+        let valueExpected = Section;
+        let valueReceived = new SkillsSection(SectionTypeEnum.SKILLS, [
+            {
+                value: "PHP",
+                type: "technology"
+            },
+            {
+                value: "Laravel",
+                type: "technology"
             }
         ]);
 
