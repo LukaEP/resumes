@@ -1,18 +1,16 @@
-import { SectionTypeEnum } from "../enums/SectionTypeEnum";
+class Section<Type> {
+    private value: Type;
 
-class Section {
-    private type: SectionTypeEnum;
-
-    public constructor(type: SectionTypeEnum) {
-        this.type = type;
+    public constructor(value: Type) {
+        this.value = value;
     }
 
-    public getType(): SectionTypeEnum {
-        return this.type;
+    public getValue(): Type {
+        return this.value;
     }
 
-    public setType(type: SectionTypeEnum): void {
-        this.type = type;
+    public setValue(value: Type): void {
+        this.value = value;
     }
 }
 
