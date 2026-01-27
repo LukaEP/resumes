@@ -16,6 +16,14 @@ class ListSection<Type> {
     public addItem(item: Type): void {
         this.list.push(item);
     }
+
+    public removeItem(index: number): boolean {
+        if (this.list.splice(index)) {
+            return true;
+        }
+
+        return false;
+    }
 }
 
 export { ListSection };

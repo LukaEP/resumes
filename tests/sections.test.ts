@@ -10,6 +10,7 @@ import { Education } from "../src/@types/Education";
 import { Levels } from "../src/enums/Levels";
 import { Types } from "../src/enums/Types";
 import { Skill } from "../src/@types/Skill";
+import { Project } from "../src/@types/Project";
 
 describe("Generic sections test", () => {
     test("Create persona section, and check if name is correct", () => {
@@ -169,5 +170,45 @@ describe("Generic list sections test", () => {
         let valueReceived = section.getList().length;
 
         expect(valueReceived).toBe(valueExpected);
+    });
+
+    test("Create projects section, remove one item, and check if the projects are correct", () => {
+        let projects: Array<Project> = [
+            {
+                title: "Polyhedra Flattening",
+                description: "Desktop app that generates and flattens a polyhedra.",
+                reference: "https://github.com/LukaEP/planificacao_poliedros"
+            },
+            {
+                title: "Basic chat",
+                description: "Basic web browser chat.",
+                reference: "https://github.com/LukaEP/basic-chat"
+            },
+            {
+                title: "Email Sender API",
+                description: "Learning project, email sender API",
+                reference: "https://github.com/LukaEP/emailSender"
+            }
+        ];
+
+        let valueExpected: Array<Project> = [
+            {
+                title: "Polyhedra Flattening",
+                description: "Desktop app that generates and flattens a polyhedra.",
+                reference: "https://github.com/LukaEP/planificacao_poliedros"
+            },
+            {
+                title: "Basic chat",
+                description: "Basic web browser chat.",
+                reference: "https://github.com/LukaEP/basic-chat"
+            }
+        ];
+
+        let section = new ListSection<Project>(projects);
+        section.removeItem(2);
+
+        let valueReceived = section.getList();
+
+        expect(valueReceived).toEqual(valueExpected);
     });
 });
