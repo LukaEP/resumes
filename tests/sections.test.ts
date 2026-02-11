@@ -1,6 +1,6 @@
 import { describe, expect, test } from "@jest/globals";
 
-import { Section } from "../src/entities/Section";
+import { SimpleSection } from "../src/entities/SimpleSection";
 import { ListSection } from "../src/entities/ListSection";
 
 import { Persona } from "../src/@types/Persona";
@@ -11,6 +11,7 @@ import { Levels } from "../src/enums/Levels";
 import { Types } from "../src/enums/Types";
 import { Skill } from "../src/@types/Skill";
 import { Project } from "../src/@types/Project";
+import { SectionTitles } from "../src/enums/SectionTitles";
 
 describe("Generic sections test", () => {
     test("Create persona section, and check if name is correct", () => {
@@ -24,7 +25,7 @@ describe("Generic sections test", () => {
         };
         let valueExpected = jerry.name;
 
-        let section = new Section<Persona>(jerry);
+        let section = new SimpleSection<Persona>(SectionTitles.PERSONA, jerry);
         let valueReceived = section.getValue().name;
 
         expect(valueReceived).toBe(valueExpected);
@@ -34,7 +35,7 @@ describe("Generic sections test", () => {
         let selfDescription = "My name is Barry Allen, and I'm the fastest man alive!";
         let valueExpected = selfDescription;
 
-        let section = new Section<SelfDescription>(selfDescription);
+        let section = new SimpleSection<SelfDescription>(SectionTitles.SELF_DESCRIPTION, selfDescription);
         let valueReceived = section.getValue();
 
         expect(valueReceived).toBe(valueExpected);
@@ -71,8 +72,8 @@ describe("Generic list sections test", () => {
         ];
         let valueExpected = professions[1];
 
-        let section = new ListSection<Profession>(professions);
-        let valueReceived = section.getList()[1];
+        let section = new ListSection<Profession>(SectionTitles.PROFESSIONS, professions);
+        let valueReceived = section.getValue()[1];
 
         expect(valueReceived).toBe(valueExpected);
     });
@@ -131,10 +132,10 @@ describe("Generic list sections test", () => {
 
         let valueExpected = 2;
 
-        let section = new ListSection<Education>(oldEducations);
+        let section = new ListSection<Education>(SectionTitles.EDUCATION, oldEducations);
         section.setList(newEducations);
 
-        let valueReceived = section.getList().length;
+        let valueReceived = section.getValue().length;
 
         expect(valueReceived).toBe(valueExpected);
     });
@@ -157,7 +158,7 @@ describe("Generic list sections test", () => {
 
         let valueExpected = 5;
 
-        let section = new ListSection<Skill>(skills);
+        let section = new ListSection<Skill>(SectionTitles.SKILLS, skills);
         section.addItem({
             value: "Docker",
             type: "coding-tool"
@@ -167,7 +168,7 @@ describe("Generic list sections test", () => {
             type: "coding-tool"
         });
 
-        let valueReceived = section.getList().length;
+        let valueReceived = section.getValue().length;
 
         expect(valueReceived).toBe(valueExpected);
     });
@@ -204,10 +205,10 @@ describe("Generic list sections test", () => {
             }
         ];
 
-        let section = new ListSection<Project>(projects);
+        let section = new ListSection<Project>(SectionTitles.PROJECTS, projects);
         section.removeItem(2);
 
-        let valueReceived = section.getList();
+        let valueReceived = section.getValue();
 
         expect(valueReceived).toEqual(valueExpected);
     });

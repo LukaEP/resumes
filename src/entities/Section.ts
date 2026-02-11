@@ -1,17 +1,9 @@
-class Section<Type> {
-    private value: Type;
+import { SectionTitles } from "../enums/SectionTitles";
 
-    public constructor(value: Type) {
-        this.value = value;
-    }
+interface Section {
+    title: SectionTitles;
 
-    public getValue(): Type {
-        return this.value;
-    }
-
-    public setValue(value: Type): void {
-        this.value = value;
-    }
+    getValue(): unknown;
 }
 
-export { Section };
+export { Section }

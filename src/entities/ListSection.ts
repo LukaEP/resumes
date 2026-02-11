@@ -1,11 +1,16 @@
-class ListSection<Type> {
+import { Section } from "./Section";
+import { SectionTitles } from "../enums/SectionTitles";
+
+class ListSection<Type> implements Section {
+    title: SectionTitles;
     private list: Array<Type>;
 
-    public constructor(list: Array<Type>) {
+    public constructor(title: SectionTitles, list: Array<Type>) {
+        this.title = title;
         this.list = list;
     }
 
-    public getList(): Array<Type> {
+    public getValue(): Array<Type> {
         return this.list;
     }
 
