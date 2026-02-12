@@ -29,6 +29,13 @@ class ListSection<Type> implements Section {
 
         return false;
     }
+
+    public toJSON() {
+        return {
+            title: this.title,
+            items: this.list
+        }
+    }
 }
 
 export { ListSection };

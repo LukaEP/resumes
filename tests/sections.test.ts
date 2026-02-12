@@ -13,7 +13,7 @@ import { Skill } from "../src/@types/Skill";
 import { Project } from "../src/@types/Project";
 import { SectionTitles } from "../src/enums/SectionTitles";
 
-describe("Generic sections test", () => {
+describe("Generic simple sections test", () => {
     test("Create persona section, and check if name is correct", () => {
         let jerry: Persona = {
             name: "Jerry",

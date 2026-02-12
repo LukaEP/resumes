@@ -17,6 +17,13 @@ class SimpleSection<Type> implements Section{
     public setValue(value: Type): void {
         this.value = value;
     }
+
+    public toJSON() {
+        return {
+            title: this.title,
+            content: this.value
+        }
+    }
 }
 
 export { SimpleSection };
